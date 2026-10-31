@@ -3,10 +3,6 @@
 </p>
 
 <p align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=600&size=20&duration=3000&pause=800&color=22D3EE&center=true&vCenter=true&width=720&lines=STM32+%2B+FreeRTOS+firmware+in+C;PID+tuning+from+real+telemetry;Simulated+CAN+2.0A+in+C%2B%2B17;213+GoogleTest+cases+%C2%B7+CI+green;Led+an+8-person+team+to+1st+of+32" alt="Typing animation"/>
-</p>
-
-<p align="center">
   <a href="https://www.linkedin.com/in/sujith-kumar26"><img src="https://img.shields.io/badge/LinkedIn-sujith--kumar26-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
   <a href="mailto:SUJITHKU002@e.ntu.edu.sg"><img src="https://img.shields.io/badge/Email-NTU-22D3EE?style=for-the-badge&logo=gmail&logoColor=white"/></a>
   <img src="https://img.shields.io/badge/B.Eng-Computer%20Engineering%20%40%20NTU-34D399?style=for-the-badge"/>
