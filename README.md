@@ -85,8 +85,7 @@ struct Engineer {
 ### 📡 `$ ./telemetry --github`
 
 <p align="center">
-  <img height="165" src="https://github-readme-stats.vercel.app/api?username=suujithhhh&show_icons=true&hide_border=true&bg_color=0a1118&title_color=22d3ee&icon_color=34d399&text_color=c9d6e2&rank_icon=github" alt="GitHub stats"/>
-  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=suujithhhh&layout=compact&hide_border=true&bg_color=0a1118&title_color=22d3ee&text_color=c9d6e2" alt="Top languages"/>
+  <img src="https://streak-stats.demolab.com?user=suujithhhh&hide_border=true&border_radius=10&background=0A1118&stroke=1F3B4D&ring=22D3EE&fire=34D399&currStreakNum=E6EDF3&sideNums=E6EDF3&currStreakLabel=22D3EE&sideLabels=8B9EB0&dates=5B7083" alt="GitHub streak"/>
 </p>
 
 <p align="center">
