@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 240" width="1000" height="240" role="img" aria-label="Animated telemetry: PID step response, UART/CAN frame log, CAN bus waveform">
+  <defs>
+    <pattern id="g" width="16" height="16" patternUnits="userSpaceOnUse">
+      <path d="M16 0H0V16" fill="none" stroke="#14202b" stroke-width="1"/>
+    </pattern>
+    <clipPath id="c1"><rect x="10" y="10" width="320" height="220" rx="10"/></clipPath>
+    <clipPath id="c2"><rect x="340" y="46" width="320" height="178"/></clipPath>
+    <clipPath id="c3"><rect x="680" y="40" width="300" height="185"/></clipPath>
+    <path id="resp" d="M30 200 L52 200 C82 200 86 76 112 78 C132 80 137 114 158 109 C178 104 182 98 204 100 L318 100"/>
+  </defs>
+  <style>
+    .mono { font-family: 'JetBrains Mono','Fira Code',Consolas,'Courier New',monospace; }
+    .late { animation: late 5s linear infinite; }
+    @keyframes late { 0%,55% { opacity: 0 } 62%,95% { opacity: 1 } 100% { opacity: 0 } }
+    .blink { animation: blink 1.2s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: .25 } }
+  </style>
+
+  <g class="mono">
+  <!-- panel 1: PID step response -->
+  <rect x="10" y="10" width="320" height="220" rx="10" fill="#0a1118" stroke="#1f3b4d"/>
+  <rect x="10" y="10" width="320" height="220" rx="10" fill="url(#g)"/>
+  <text x="24" y="32" font-size="11" fill="#8b9eb0">WHEEL PID · step response</text>
+  <circle cx="314" cy="28" r="4" fill="#34d399" class="blink"/>
+  <line x1="30" y1="100" x2="318" y2="100" stroke="#fbbf24" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="316" y="93" font-size="9" fill="#fbbf24" text-anchor="end">setpoint</text>
+  <line x1="30" y1="200" x2="318" y2="200" stroke="#2a3f50"/>
+  <line x1="30" y1="50" x2="30" y2="200" stroke="#2a3f50"/>
+  <use href="#resp" fill="none" stroke="#163444" stroke-width="2"/>
+  <path d="M30 200 L52 200 C82 200 86 76 112 78 C132 80 137 114 158 109 C178 104 182 98 204 100 L318 100" fill="none" stroke="#22d3ee" stroke-width="2.2" pathLength="1" stroke-dasharray="1 1">
+    <animate attributeName="stroke-dashoffset" values="1;0;0" keyTimes="0;0.6;1" dur="5s" repeatCount="indefinite"/>
+  </path>
+  <circle r="4" fill="#22d3ee">
+    <animateMotion dur="5s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.6;1" calcMode="linear"><mpath href="#resp"/></animateMotion>
+  </circle>
+  <g class="late" font-size="9.5">
+    <text x="116" y="68" fill="#f472b6">overshoot</text>
+    <text x="220" y="122" fill="#34d399">settled · e(t) → 0</text>
+  </g>
+  <text x="24" y="220" font-size="9" fill="#3e5a6e">u(t) = Kp·e + Ki·∫e dt + Kd·de/dt</text>
+
+  <!-- panel 2: frame log -->
+  <rect x="340" y="10" width="320" height="220" rx="10" fill="#0a1118" stroke="#1f3b4d"/>
+  <text x="354" y="32" font-size="11" fill="#8b9eb0">UART ⇄ CAN · frame log</text>
+  <text x="646" y="32" font-size="9" fill="#34d399" text-anchor="end" class="blink">● LIVE</text>
+  <g clip-path="url(#c2)" font-size="11" xml:space="preserve">
+    <g>
+      <text x="356" y="62"><tspan fill="#22d3ee">TX </tspan><tspan fill="#c9d6e2" dx="6">0x120 [4] 4D 56 01 2C</tspan><tspan fill="#5b7083" dx="8">MOVE 300</tspan></text><text x="356" y="80"><tspan fill="#34d399">RX </tspan><tspan fill="#c9d6e2" dx="6">ACK seq=17</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="98"><tspan fill="#22d3ee">TX </tspan><tspan fill="#c9d6e2" dx="6">0x121 [4] 54 52 5A 00</tspan><tspan fill="#5b7083" dx="8">TURN 90</tspan></text><text x="356" y="116"><tspan fill="#34d399">RX </tspan><tspan fill="#c9d6e2" dx="6">ACK seq=18</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="134"><tspan fill="#f87171">!! </tspan><tspan fill="#c9d6e2" dx="6">CRC-15 mismatch</tspan><tspan fill="#5b7083" dx="8">retransmit</tspan></text><text x="356" y="152"><tspan fill="#22d3ee">TX </tspan><tspan fill="#c9d6e2" dx="6">0x121 [4] 54 52 5A 00</tspan><tspan fill="#5b7083" dx="8">TURN 90</tspan></text><text x="356" y="170"><tspan fill="#34d399">RX </tspan><tspan fill="#c9d6e2" dx="6">ACK seq=19</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="188"><tspan fill="#fbbf24">IMU</tspan><tspan fill="#c9d6e2" dx="6">yaw=89.6  err=-0.4°</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="206"><tspan fill="#22d3ee">TX </tspan><tspan fill="#c9d6e2" dx="6">0x100 [1] 53</tspan><tspan fill="#5b7083" dx="8">STOP (prio)</tspan></text><text x="356" y="224"><tspan fill="#34d399">RX </tspan><tspan fill="#c9d6e2" dx="6">ACK seq=20</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="242"><tspan fill="#22d3ee">TX </tspan><tspan fill="#c9d6e2" dx="6">0x120 [4] 4D 56 01 2C</tspan><tspan fill="#5b7083" dx="8">MOVE 300</tspan></text><text x="356" y="260"><tspan fill="#34d399">RX </tspan><tspan fill="#c9d6e2" dx="6">ACK seq=17</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="278"><tspan fill="#22d3ee">TX </tspan><tspan fill="#c9d6e2" dx="6">0x121 [4] 54 52 5A 00</tspan><tspan fill="#5b7083" dx="8">TURN 90</tspan></text><text x="356" y="296"><tspan fill="#34d399">RX </tspan><tspan fill="#c9d6e2" dx="6">ACK seq=18</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="314"><tspan fill="#f87171">!! </tspan><tspan fill="#c9d6e2" dx="6">CRC-15 mismatch</tspan><tspan fill="#5b7083" dx="8">retransmit</tspan></text><text x="356" y="332"><tspan fill="#22d3ee">TX </tspan><tspan fill="#c9d6e2" dx="6">0x121 [4] 54 52 5A 00</tspan><tspan fill="#5b7083" dx="8">TURN 90</tspan></text><text x="356" y="350"><tspan fill="#34d399">RX </tspan><tspan fill="#c9d6e2" dx="6">ACK seq=19</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="368"><tspan fill="#fbbf24">IMU</tspan><tspan fill="#c9d6e2" dx="6">yaw=89.6  err=-0.4°</tspan><tspan fill="#5b7083" dx="8"></tspan></text><text x="356" y="386"><tspan fill="#22d3ee">TX </tspan><tspan fill="#c9d6e2" dx="6">0x100 [1] 53</tspan><tspan fill="#5b7083" dx="8">STOP (prio)</tspan></text><text x="356" y="404"><tspan fill="#34d399">RX </tspan><tspan fill="#c9d6e2" dx="6">ACK seq=20</tspan><tspan fill="#5b7083" dx="8"></tspan></text>
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="0 -180" dur="9s" repeatCount="indefinite"/>
+    </g>
+  </g>
+
+  <!-- panel 3: CAN bus waveform -->
+  <rect x="670" y="10" width="320" height="220" rx="10" fill="#0a1118" stroke="#1f3b4d"/>
+  <rect x="670" y="10" width="320" height="220" rx="10" fill="url(#g)"/>
+  <text x="684" y="32" font-size="11" fill="#8b9eb0">CAN 2.0A · differential bus</text>
+  <text x="684" y="100" font-size="9" fill="#22d3ee">CAN_H</text>
+  <text x="684" y="180" font-size="9" fill="#f472b6">CAN_L</text>
+  <g clip-path="url(#c3)">
+    <g>
+      <path d="M690 105 L720 105 L720 135 L730 135 L730 105 L750 105 L750 135 L760 135 L760 105 L850 105 L850 135 L860 135 L860 105 L880 105 L880 135 L890 135 L890 105 L900 105 L900 135 L910 135 L910 105 L930 105 L930 135 L960 135 L960 105 L970 105 L970 135 L990 135 L990 105 L1020 105 L1020 135 L1030 135 L1030 105 L1050 105 L1050 135 L1060 135 L1060 105 L1150 105 L1150 135 L1160 135 L1160 105 L1180 105 L1180 135 L1190 135 L1190 105 L1200 105 L1200 135 L1210 135 L1210 105 L1230 105 L1230 135 L1260 135 L1260 105 L1270 105 L1270 135 L1290 135 L1290 105 L1320 105 L1320 135 L1330 135 L1330 105 L1350 105 L1350 135 L1360 135 L1360 105 L1450 105 L1450 135 L1460 135 L1460 105 L1480 105 L1480 135 L1490 135 L1490 105 L1500 105 L1500 135 L1510 135 L1510 105 L1530 105 L1530 135 L1560 135 L1560 105 L1570 105 L1570 135 L1590 135" fill="none" stroke="#22d3ee" stroke-width="2"/>
+      <path d="M690 165 L720 165 L720 135 L730 135 L730 165 L750 165 L750 135 L760 135 L760 165 L850 165 L850 135 L860 135 L860 165 L880 165 L880 135 L890 135 L890 165 L900 165 L900 135 L910 135 L910 165 L930 165 L930 135 L960 135 L960 165 L970 165 L970 135 L990 135 L990 165 L1020 165 L1020 135 L1030 135 L1030 165 L1050 165 L1050 135 L1060 135 L1060 165 L1150 165 L1150 135 L1160 135 L1160 165 L1180 165 L1180 135 L1190 135 L1190 165 L1200 165 L1200 135 L1210 135 L1210 165 L1230 165 L1230 135 L1260 135 L1260 165 L1270 165 L1270 135 L1290 135 L1290 165 L1320 165 L1320 135 L1330 135 L1330 165 L1350 165 L1350 135 L1360 135 L1360 165 L1450 165 L1450 135 L1460 135 L1460 165 L1480 165 L1480 135 L1490 135 L1490 165 L1500 165 L1500 135 L1510 135 L1510 165 L1530 165 L1530 135 L1560 135 L1560 165 L1570 165 L1570 135 L1590 135" fill="none" stroke="#f472b6" stroke-width="2"/>
+      <g font-size="8" fill="#3e5a6e" text-anchor="middle"><text x="695" y="190">0</text><text x="705" y="190">0</text><text x="715" y="190">0</text><text x="725" y="190">1</text><text x="735" y="190">0</text><text x="745" y="190">0</text><text x="755" y="190">1</text><text x="765" y="190">0</text><text x="775" y="190">0</text><text x="785" y="190">0</text><text x="795" y="190">0</text><text x="805" y="190">0</text><text x="815" y="190">0</text><text x="825" y="190">0</text><text x="835" y="190">0</text><text x="845" y="190">0</text><text x="855" y="190">1</text><text x="865" y="190">0</text><text x="875" y="190">0</text><text x="885" y="190">1</text><text x="895" y="190">0</text><text x="905" y="190">1</text><text x="915" y="190">0</text><text x="925" y="190">0</text><text x="935" y="190">1</text><text x="945" y="190">1</text><text x="955" y="190">1</text><text x="965" y="190">0</text><text x="975" y="190">1</text><text x="985" y="190">1</text><text x="995" y="190">0</text><text x="1005" y="190">0</text><text x="1015" y="190">0</text><text x="1025" y="190">1</text><text x="1035" y="190">0</text><text x="1045" y="190">0</text><text x="1055" y="190">1</text><text x="1065" y="190">0</text><text x="1075" y="190">0</text><text x="1085" y="190">0</text><text x="1095" y="190">0</text><text x="1105" y="190">0</text><text x="1115" y="190">0</text><text x="1125" y="190">0</text><text x="1135" y="190">0</text><text x="1145" y="190">0</text><text x="1155" y="190">1</text><text x="1165" y="190">0</text><text x="1175" y="190">0</text><text x="1185" y="190">1</text><text x="1195" y="190">0</text><text x="1205" y="190">1</text><text x="1215" y="190">0</text><text x="1225" y="190">0</text><text x="1235" y="190">1</text><text x="1245" y="190">1</text><text x="1255" y="190">1</text><text x="1265" y="190">0</text><text x="1275" y="190">1</text><text x="1285" y="190">1</text><text x="1295" y="190">0</text><text x="1305" y="190">0</text><text x="1315" y="190">0</text><text x="1325" y="190">1</text><text x="1335" y="190">0</text><text x="1345" y="190">0</text><text x="1355" y="190">1</text><text x="1365" y="190">0</text><text x="1375" y="190">0</text><text x="1385" y="190">0</text><text x="1395" y="190">0</text><text x="1405" y="190">0</text><text x="1415" y="190">0</text><text x="1425" y="190">0</text><text x="1435" y="190">0</text><text x="1445" y="190">0</text><text x="1455" y="190">1</text><text x="1465" y="190">0</text><text x="1475" y="190">0</text><text x="1485" y="190">1</text><text x="1495" y="190">0</text><text x="1505" y="190">1</text><text x="1515" y="190">0</text><text x="1525" y="190">0</text><text x="1535" y="190">1</text><text x="1545" y="190">1</text><text x="1555" y="190">1</text><text x="1565" y="190">0</text><text x="1575" y="190">1</text><text x="1585" y="190">1</text></g>
+      <animateTransform attributeName="transform" type="translate" from="0 0" to="-300 0" dur="4s" repeatCount="indefinite"/>
+    </g>
+  </g>
+  <text x="684" y="216" font-size="9.5" fill="#34d399">ID 0x120 · arbitration won</text>
+  <text x="976" y="216" font-size="9" fill="#3e5a6e" text-anchor="end">CRC-15 ✓  bit-stuffed</text>
+  </g>
+</svg>
