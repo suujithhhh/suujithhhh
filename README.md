@@ -64,33 +64,6 @@ struct Engineer {
 </tr>
 </table>
 
-### 🧰 `$ apt list --installed`
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=c,cpp,python,java,linux,cmake,git,githubactions,ros,raspberrypi,arduino,vscode&perline=12" alt="Tech stack"/>
-</p>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/STM32-HAL-03234B?style=flat-square&logo=stmicroelectronics&logoColor=white"/>
-  <img src="https://img.shields.io/badge/FreeRTOS-RTOS-34D399?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Buses-I2C%20%C2%B7%20UART%20%C2%B7%20CAN-22D3EE?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Control-PID%20%C2%B7%20IMU%20%C2%B7%20Encoders-F472B6?style=flat-square"/>
-  <img src="https://img.shields.io/badge/Testing-GoogleTest%20%C2%B7%20Fault%20Injection-FBBF24?style=flat-square"/>
-</p>
-
-### 📡 `$ ./telemetry --github`
-
-<p align="center">
-  <img src="https://streak-stats.demolab.com?user=suujithhhh&hide_border=true&border_radius=10&background=0A1118&stroke=1F3B4D&ring=22D3EE&fire=34D399&currStreakNum=E6EDF3&sideNums=E6EDF3&currStreakLabel=22D3EE&sideLabels=8B9EB0&dates=5B7083" alt="GitHub streak"/>
-</p>
-
-<p align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/suujithhhh/suujithhhh/output/snake-dark.svg"/>
-    <img src="https://raw.githubusercontent.com/suujithhhh/suujithhhh/output/snake.svg" alt="Contribution snake"/>
-  </picture>
-</p>
-
 <p align="center">
   <img src="assets/factory.svg" width="100%" alt="Robot arm inspecting parts on a conveyor"/>
 </p>
